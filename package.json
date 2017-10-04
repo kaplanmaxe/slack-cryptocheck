@@ -1,0 +1,39 @@
+{
+  "name": "slack-cryptocheck",
+  "version": "1.0.0",
+  "description": "Check cryptocurrency prices from Slack!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kaplanmaxe/slack-cryptocheck.git"
+  },
+  "keywords": [
+    "slack",
+    "cryptocurrency",
+    "bitcoin",
+    "ethereum"
+  ],
+  "author": "Max Kaplan <maxekaplan12@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kaplanmaxe/slack-cryptocheck/issues"
+  },
+  "homepage": "https://github.com/kaplanmaxe/slack-cryptocheck#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cryptocheck": "^1.2.0",
+    "dotenv": "^4.0.0",
+    "express": "^4.16.1",
+    "request": "^2.83.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "eslint-config-kaplankomputing": "^1.0.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.0"
+  }
+}
