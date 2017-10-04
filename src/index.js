@@ -42,7 +42,7 @@ app.post('/api/v1/cmc', (req, res) => {
 
 app.get('/api/v1/auth', (req, res) => {
   const options = {
-    uri: `https://slack.com/api/oauth.access?code=${req.query.code}&client_id=${process.env.CLIENT_ID}&client_secret=${process.env.CLIENT_SECRET}&$redirect_uri=${process.env.REDIRECT_URI}`,
+    uri: `https://slack.com/api/oauth.access?code=${req.query.code}&client_id=${process.env.CLIENT_ID}&client_secret=${process.env.CLIENT_SECRET}&redirect_uri=${process.env.REDIRECT_URI}`,
     method: 'GET',
   };
   request(options, (error, response, body) => {
