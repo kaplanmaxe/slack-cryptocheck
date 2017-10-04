@@ -3,7 +3,9 @@ import http from 'http';
 import bodyParser from 'body-parser';
 import { exec } from 'child_process';
 import path from 'path';
+import fs from 'fs';
 import request from 'request';
+import { Markdown } from 'node-markdown';
 
 require('dotenv').config();
 
@@ -50,7 +52,7 @@ app.get('/api/v1/auth', (req, res) => {
       // I don't want any of your data.
       body = {};
       if (success) {
-        res.send('Cryptocheck has successfully been added to your slack team! Click <a href="https://cryptocheck.kaplankomputing.com">here</a> to see the docs.');
+        res.send('Cryptocheck has successfully been added to your slack team! Click <a href="hhttps://github.com/kaplanmaxe/slack-cryptocheck">here</a> to see the docs.');
       } else {
         res.send('An error occurred. Please email info@kaplankomputing.com');
       }
@@ -58,7 +60,7 @@ app.get('/api/v1/auth', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '/../html/add_to_slack.html'));
+  res.send(Markdown(fs.readFileSync(path.join(__dirname, '../README.md'), 'utf8')));
 });
 
 /**
