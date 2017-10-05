@@ -1,11 +1,12 @@
 import express from 'express';
 import http from 'http';
 import bodyParser from 'body-parser';
-import { exec } from 'child_process';
+import { execFile } from 'child_process';
 import path from 'path';
 import fs from 'fs';
 import request from 'request';
 import { Markdown } from 'node-markdown';
+
 
 require('dotenv').config();
 
@@ -17,7 +18,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
  * Kraken endpoint
  */
 app.post('/api/v1/kraken', (req, res) => {
-  exec(`cryptocheck kraken ${parseCurrency(req.body.text)}`, (err, stdout) => {
+  execFile(process.env.CRYPTOCHECK_PATH, ['kraken', parseCurrency(req.body.text)], (err, stdout) => {
     // Currently a work around due to a bug in cryptocheck.
     if (err) res.json({ text: 'Asset not found.' });
     res.json({ text: stdout });
@@ -28,7 +29,7 @@ app.post('/api/v1/kraken', (req, res) => {
  * GDAX endpoint
  */
 app.post('/api/v1/gdax', (req, res) => {
-  exec(`cryptocheck gdax ${parseCurrency(req.body.text)}`, (err, stdout) => {
+  execFile(process.env.CRYPTOCHECK_PATH, ['gdax', parseCurrency(req.body.text)], (err, stdout) => {
     res.json({ text: stdout });
   });
 });
@@ -37,7 +38,7 @@ app.post('/api/v1/gdax', (req, res) => {
  * Coinmarketcap endpoint
  */
 app.post('/api/v1/cmc', (req, res) => {
-  exec(`cryptocheck cmc ${parseCurrency(req.body.text)}`, (err, stdout) => {
+  execFile(process.env.CRYPTOCHECK_PATH, ['cmc', parseCurrency(req.body.text)], (err, stdout) => {
     res.json({ text: stdout });
   });
 });
