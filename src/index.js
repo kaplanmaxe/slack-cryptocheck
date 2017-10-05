@@ -52,7 +52,7 @@ app.get('/api/v1/auth', (req, res) => {
       // I don't want any of your data.
       body = {};
       if (success) {
-        res.send('Cryptocheck has successfully been added to your slack team! Click <a href="https://github.com/kaplanmaxe/slack-cryptocheck">here</a> to see the docs.');
+        res.send('Cryptocheck has successfully been added to your slack team! Click <a href="https://github.com/kaplanmaxe/slack-cryptocheck">here</a> to go home.');
       } else {
         res.send('An error occurred. Please email info@kaplankomputing.com');
       }
